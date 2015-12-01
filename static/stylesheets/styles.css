@@ -1,0 +1,8 @@
+/* Navigation */
+.navbar, .navbar-default {
+	background-color: #f8f8f8;
+}
+.navbar-default .navbar-nav li a:hover, .navbar-default .navbar-nav li a:focus {
+    color: #333;
+    background-color: transparent;
+}
