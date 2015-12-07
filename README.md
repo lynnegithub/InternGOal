@@ -17,8 +17,8 @@
 
 ## Rules
 
-* `$ Codereview`
-* `$ UXDesign`
+### Codereview
+### UXDesign
 
 ## Reference
 
