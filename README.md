@@ -17,8 +17,8 @@
 
 ## Rules
 
-#### Codereview
-#### UXDesign
+#### Code review
+#### UX Design
 
 ## Reference
 
