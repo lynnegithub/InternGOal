@@ -26,5 +26,6 @@
 * `http://glynjackson.org/weblog/tutorial-using-angularjs-django/`
 * `http://blog.kevinastone.com/getting-started-with-django-rest-framework-and-angularjs.html`
 * `https://thinkster.io/django-angularjs-tutorial`
+* `http://www.imooc.com/article/2328`
 
 
