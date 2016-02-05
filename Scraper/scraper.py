@@ -6,8 +6,8 @@ import json
 browser = webdriver.Firefox();
 allJobIDS  = []
 allJobInfo = []
-term = "1161"
-userID = ""
+term = "1165"
+userID = "ja4green"
 Password = ""
 def login():
     #login using jeffs credentials
@@ -31,11 +31,11 @@ def preformSearch():
     browser.find_element_by_id("UW_CO_JOBSRCH_UW_CO_WT_SESSION").send_keys(term)
     browser.find_element_by_id("UW_CO_JOBSRCH_UW_CO_WT_SESSION")
     browser.find_element_by_xpath("//select[@name='UW_CO_JOBSRCH_UW_CO_JS_JOBSTATUS']/option[text()='Apps Avail']").click()
-    time.sleep(1)
+    time.sleep(4)
     #search
     browser.find_element_by_id("UW_CO_JOBSRCHDW_UW_CO_DW_SRCHBTN").click()
     #get amount of jobs
-    time.sleep(5)
+    time.sleep(10)
     str = browser.find_element_by_class_name("PSGRIDCOUNTER").text
     jobAmount = [int(s) for s in str.split() if s.isdigit()][0]
     #cycle through each page getting all the jobs
@@ -86,11 +86,22 @@ def getJobInfo(jobID):
     # get employer info
     browser.find_element_by_link_text("Employer Profile").click();
     soup = bs4.BeautifulSoup(browser.page_source)
-    jobInfo['empUnit1'] = soup.find(id = "UW_CO_JOBDTL_VW_UW_CO_EMPLYR_NAME1").text
-    jobInfo['empUnit2'] = soup.find(id = "UW_CO_JOBDTL_VW_UW_CO_EMPLYR_NAME1").text
-    jobInfo['empwebSite'] = soup.find(id = "UW_CO_JOBDTL_DW_UW_CO_URL").text
-    jobInfo['empDesc'] = soup.find(id = "UW_CO_JOBDTL_VW_UW_CO_PROFILE").text
-   
+    try:
+        jobInfo['empUnit1'] = soup.find(id = "UW_CO_JOBDTL_VW_UW_CO_EMPLYR_NAME1").text
+    except AttributeError:
+        jobInfo['empUnit1'] = ""
+    try: 
+        jobInfo['empUnit2'] = soup.find(id = "UW_CO_JOBDTL_VW_UW_CO_EMPLYR_NAME1").text
+    except AttributeError:
+        jobInfo['empUnit2'] = ""
+    try:
+        jobInfo['empwebSite'] = soup.find(id = "UW_CO_JOBDTL_DW_UW_CO_URL").text
+    except AttributeError:
+        jobInfo['empwebSite'] = ""
+    try:
+        jobInfo['empDesc'] = soup.find(id = "UW_CO_JOBDTL_VW_UW_CO_PROFILE").text
+    except AttributeError:
+        jobInfo['empDesc'] = ""
     return jobInfo
 
 
